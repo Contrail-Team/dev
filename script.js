@@ -14,10 +14,18 @@ function toggleModal2() {
 let element = document.querySelectorAll('#app>.starter')
 element[0].classList.toggle('hidden')
 }
+function userpagereviseisshow() {
+  let element = document.querySelectorAll('#app>.userpage-revise-bg')
+  element[0].classList.toggle('hidden')
+  }
 function menuisshow() {
 let element = document.querySelectorAll('#app>.menus')
 element[0].classList.toggle('hidden')
 }
+function userpageisshow() {
+  let element = document.querySelectorAll('#app>.userpage-bg')
+  element[0].classList.toggle('hidden')
+  }
 setInterval("toggleSound()",1);
 function init()
 {
@@ -77,6 +85,10 @@ function createme()
    var name = document.getElementById("create").value;
    alert("创建成功，亲爱的 "+name+' \n请刷新网页');
    localStorage.setItem("username",name);
+   localStorage.setItem("userpage-background","img/default_background.jpg");
+   localStorage.setItem("head","img/default_avatar.jpg");
+   localStorage.setItem("signature","你还没设置个性签名，赶快设置一下吧");
+   
 }
 function findme()
 {

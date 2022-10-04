@@ -68,6 +68,40 @@ background-color: rgba(0, 0, 0, 0.6);
 /* 置顶 */
 z-index: 101;
 }
+.userpage-bg {
+  /* 占满屏幕 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 内容居中 */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  /* 背景色  */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* 置顶 */
+  z-index: 101;
+  }
+  .userpage-revise-bg {
+    /* 占满屏幕 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 内容居中 */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    /* 背景色  */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* 置顶 */
+    z-index: 101;
+    }
 /* 内容 */
 .content {
 /* 背景色 */
@@ -102,6 +136,30 @@ z-index: 103;
 border-radius: 1rem;
 padding: 1.2rem;
 }
+.userpage {
+  /* 背景色 */
+  background-color: rgb(255, 255, 255);
+  /* 置顶 */
+  position : absolute;
+  width : 80%;
+  height : 80%;
+  z-index: 200;
+  /* 其他样式 */
+  border-radius: 25px;
+  /* padding: 1.2rem; */
+  }
+.reviseuserpage {
+    /* 背景色 */
+    background-color: rgb(255, 255, 255);
+    /* 置顶 */
+    position : absolute;
+    width : 80%;
+    height : 80%;
+    z-index: 200;
+    /* 其他样式 */
+    border-radius: 25px;
+    /* padding: 1.2rem; */
+    }
 /* 隐藏的时候 */
 .hidden {
 display: none;
@@ -133,7 +191,7 @@ padding: 10px;
 width: 150px;
 transition: all 0.5s;
 cursor: pointer;
-margin: 5px;
+/* margin: 5px; */
 vertical-align:middle;
 }
 .back {
@@ -161,3 +219,39 @@ background-color: #f41e1e;
 .fixed-bottom { position: fixed; bottom: 0; width:100%;text-align: center;}
 .fixed-bottom-button { position: fixed; bottom: 0;text-align: center;}
 .inputbox{width:40%;height:6%; border-radius:14px;border:2px solid #0000002b;}
+.image{ 
+  width: 60px; 
+  height:60px; 
+  border-radius:200px; 
+  margin:5px 0px 5px 5px;
+}
+.txt1{text-align: center;}
+.hlong *{display:inline-block;vertical-align:middle;}
+.userbox{
+  border-radius: 15px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  margin: 0 auto;
+  width:fit-content;
+}
+.userpage-avatar{ 
+  width:200px; 
+  height:200px; 
+  border-radius:200px; 
+}
+img{
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  border-bottom-left-radius: 0px;  /* 左下角 */
+
+  border-bottom-right-radius: 0px; 
+ }
+.funcbox
+{
+  background-color: rgba(255, 255, 255, 0.615);
+  margin: 0px 0px 0px 20px;
+  width: 30%;
+  height :60%;
+  border-radius: 15px;
+}
