@@ -1,4 +1,3 @@
-
 var music;
 flag=0; 
 function toggleModal() {

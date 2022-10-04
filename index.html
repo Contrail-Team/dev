@@ -87,17 +87,37 @@ style="display: block; width: 3%; height:3%;"></audio> -->
 			<input type="file" id="img_upload"/>
              <textarea id="base64_code" rows="30" cols="360"></textarea>
           <p id="img_area"></p> -->
-
-			<div class="funcbox">
+			<div class="AppList">
+			<div class="funcbox" style="position: absolute;">
 				<img src="img/memory.png" class="img"></img>
 				<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记忆中心</h5>
 				<div style="text-align:right;">
 						<!-- <p>作</p> -->
 						<button onclick="toggleModal();mecenter()" class="back">
-							记忆中心
+							进入
 						</button>
 				</div>
 			</div>
+
+			<div class="funcbox" style="position: absolute;margin-left:35%;">
+				<img src="img/long-dog-challenge.png" class="img"></img>
+				<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长狗挑战</h5>
+				<div style="text-align:right;">
+						<p id="ldc"></p>
+						<a href="./long-doge-challenge/index.html">
+						<button class="back">
+							访问
+						</button>
+						<script>
+							 var s = localStorage.getItem("ldc");
+							 if(s==null) document.getElementById("ldc").innerHTML='你还没有wows记录';
+							 else document.getElementById("ldc").innerHTML='你的wows最高纪录:'+s+' wows';
+						</script>
+					</a>
+				</div>
+			</div>
+			</div>
+
 			<!-- 记忆中心 按钮及内容 -->
 			<div id="app">
 				
@@ -296,7 +316,7 @@ style="display: block; width: 3%; height:3%;"></audio> -->
 		 localStorage.setItem("signature",s);
 	}
 </script>
-		<div style="float: right;bottom:0;position: absolute;">
+		<div style="position: absolute;bottom:0;">
 			<button class="back" onclick="userpagereviseisshow();alert('修改成功后，请刷新网页');">
 				返回
 			</button>

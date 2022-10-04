@@ -150,7 +150,7 @@ padding: 1.2rem;
   }
 .reviseuserpage {
     /* 背景色 */
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.599);
     /* 置顶 */
     position : absolute;
     width : 80%;
@@ -238,6 +238,7 @@ background-color: #f41e1e;
   width:200px; 
   height:200px; 
   border-radius:200px; 
+  margin: 0 auto;
 }
 img{
   width: 100%;
