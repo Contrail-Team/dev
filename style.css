@@ -256,3 +256,44 @@ img{
   height :60%;
   border-radius: 15px;
 }
+
+
+
+.card {
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: var(--card-bg);
+  margin-bottom: 21px;
+  transition: all 200ms ease;
+}
+
+.card:nth-child(3n-2) {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.card:nth-child(3n-1) {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.card:nth-child(3n) {
+  margin-left: 8px;
+  margin-right: 0;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-grid {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 16px;
+}
+.card-content {
+  font-size: 19px;
+  line-height: 1.4211;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+}
