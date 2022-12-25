@@ -1,0 +1,96 @@
+<head>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+  <title>正在准备Contrail</title>
+</head>
+<style>
+  body
+  {
+    background-color: black;
+    color : white;
+  }
+  .content
+  {
+    width: auto;
+    height: 300px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgba(221, 221, 221, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#ffffff; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+</style>
+<body>
+  <script>
+      let fun = () => normal();
+      let sleep = function(fun,time){
+      setTimeout(()=>{
+      start();
+      },time);
+      }
+      sleep(fun,3000);
+      function onto()
+      {
+        document.getElementById("text").innerHTML="<h1 style='font-size:105px'>Contrail</h1>"; 
+        let fun = () => normal();
+           let sleep = function(fun,time){
+          setTimeout(()=>{
+            var username = localStorage.getItem("username");
+           if (username=="" || username==null){
+            window.location.href="assets/fornew.html";
+            }
+            else
+            window.location.href="smart-island.html";
+           },time);
+           }
+          sleep(fun,2000);
+        
+      }
+      function start()
+      {
+          document.getElementById("text").innerHTML="<h1 style='font-size:85px'>Welcome to</h1>";
+          let fun = () => normal();
+           let sleep = function(fun,time){
+          setTimeout(()=>{
+            onto();
+           },time);
+           }
+          sleep(fun,1000);
+         
+      }
+      function check()
+{
+ 
+}
+  </script>
+   <div class="content" style="text-align:center;" id="text">
+      <h4>这里是Contrail</h5>
+      <h4>下一次大更新内容:重置Contrail</h4>
+      <h5>一言：<p id="hitokoto" style="text-decoration: none;color: #fff;"><a id="hitokoto_text">:D 获取中...</a></p></h5>
+      <br>
+      <h5 style="color:rgb(46, 83, 206)">正在准备Contrail</h5>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto_text')
+      hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      hitokoto.innerText = data.hitokoto
+    })
+    .catch(console.error)
+</script>
+   </div>
+</body>

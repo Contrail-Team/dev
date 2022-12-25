@@ -1,0 +1,400 @@
+<head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    </head>
+    <style>
+        body{
+          background-image: url("img/default_background.jpg");
+          background-repeat: no-repeat;
+        }
+        .island
+        {
+           background-color: black;
+           color: rgb(0, 0, 0);
+           width: 20%;
+           height: 10%;
+           font-size: 30px;
+           box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+           border-radius: 32px;
+           text-align:left;
+           
+        }
+        .box {
+          transition: width 0.1s, height 2s, oolor 0.1s, background-color, 0.5s;
+          -webkit-transition: width 0.1s, height 2s,oolor 0.1s , background-color, 0.5s;
+      }
+      .box :hover {
+           width: 50%;
+           height: 10%;
+           color: rgb(255, 255, 255);
+          background-color: rgb(0, 0, 0);   
+      } 
+      .top
+      {
+        position: sticky; 
+	top: 10px;
+    z-index:999;
+      }
+      </style>
+      <script>
+         var a=0,app="none",lm="Contrail",rm="Welcome";
+         function memory()
+         {
+              lm=document.getElementById("left").innerHTML;
+              rm=document.getElementById("right").innerHTML;
+         }
+         function setmemory()
+         {
+            document.getElementById("left").innerHTML=lm;
+            document.getElementById("right").innerHTML=rm;
+         }
+         function clear()
+         {
+            document.getElementById("left").innerHTML="";
+            document.getElementById("right").innerHTML="";
+         }
+         // 0 normal ; 1 large ; 2 larger
+         function large()
+         {
+          setmemory();
+              document.getElementById("change").style.width="50%";
+              document.getElementById("change").style.height="10%";
+              document.getElementById("change").style.color="rgb(255, 255, 255)";
+              a=1;
+              // setTimeout(function()
+              // {
+      
+              // },5000);
+      
+         }
+         function larger()
+         {
+              setmemory();
+              document.getElementById("change").style.width="50%";
+              document.getElementById("change").style.height="40%";
+              document.getElementById("change").style.color="rgb(255, 255, 255)";
+              a=2;
+              
+         }
+         function normal()
+         {
+              memory();
+             
+              document.getElementById("change").style.width="20%";
+              document.getElementById("change").style.height="10%";
+              document.getElementById("change").style.color="rgb(0, 0, 0)";
+              app="none";
+              document.querySelector('.times').innerHTML = "";
+              a=0; clear();
+         }
+         function change()
+         {
+            var s=document.getElementById("text").value;
+            if(s.length>10) alert("内容过多");
+            auto(s,"",1);
+         }
+         function dowhat()
+         {
+            // alert(a);
+            if(a==1 || a==2)
+            {
+              normal();
+            }
+            else if(a==0)
+            {
+              large();
+            }
+         }
+         function start()
+         {
+            large();
+            let fun = () => document.getElementById("left").innerHTML="Welcome";
+            let sleep = function(fun,time){
+            setTimeout(()=>{
+            fun();
+            },time);
+            }
+            sleep(fun,1000);
+            fun = () => document.getElementById("left").innerHTML="Welcome to";
+            sleep(fun,1000);
+            fun = () => document.getElementById("left").innerHTML="Welcome to Contrail";
+            sleep(fun,1000);
+            fun = () => document.getElementById("left").innerHTML="Welcome to Contrail !";
+            sleep(fun,1000);
+         }
+         function auto(l,r,sta)
+         {
+            if(sta==1) large();
+            else if(sta==2) larger();
+            document.getElementById("left").innerHTML=l;
+            document.getElementById("right").innerHTML=r;
+            let fun = () => normal();
+            let sleep = function(fun,time){
+            setTimeout(()=>{
+            fun();
+            },time);
+            }
+            sleep(fun,2000);
+         }
+      </script>
+      <script>
+        function compileStr(code){
+  var c = String.fromCharCode(code.charCodeAt(0) + code.length);
+  for(var i = 1; i < code.length ; i++){
+    c += String.fromCharCode(code.charCodeAt(i) + code.charCodeAt(i - 1));
+  }
+  return escape(c)
+}
+// 字符串解密构造函数
+function unCompileStr(code){
+  code = unescape(code);
+  var c = String.fromCharCode(code.charCodeAt(0) - code.length);
+  for(var i = 1; i < code.length; i++){
+    c += String.fromCharCode(code.charCodeAt(i) - c.charCodeAt(i - 1));
+  }
+  return c;
+}
+function check()
+{
+  var username = localStorage.getItem("username");
+  if (username=="" || username==null){
+     menuisshow();
+     toggleModal();
+  }
+}
+function createme()
+{
+   var name = document.getElementById("create").value;
+//    alert("创建成功，亲爱的 "+name+' \n请刷新网页');
+   auto(name,"创建成功",1);
+   localStorage.setItem("username",name);
+   localStorage.setItem("userpage-background","img/default_background.jpg");
+   localStorage.setItem("head","img/default_avatar.jpg");
+   localStorage.setItem("signature","你还没设置个性签名，赶快设置一下吧");
+   
+}
+function findme()
+{
+   var code = document.getElementById("find").value;
+   var username = unCompileStr(code);
+   auto(username,"寻找成功",1);
+   localStorage.setItem("username",username);
+}
+function readme()
+{
+  var username = localStorage.getItem("username");
+  document.getElementById("show_name").innerHTML=username;
+}
+        function timer()
+        {
+            app="timer";
+            clear();
+            larger();
+        }
+        function getTime() {
+            var date = new Date();
+            var year = date.getFullYear(); //获取年份
+            var month = date.getMonth() + 1; //获取月份
+            var day = date.getDate(); //获取日期
+            var hour = date.getHours(); //获取小时
+            hour = hour < 10 ? '0' + hour : hour;
+            var minute = date.getMinutes(); // 获取分
+            minute = minute < 10 ? '0' + minute : minute;
+            var seconds = date.getSeconds(); //获取秒
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            return hour + ':' + minute + ':' + seconds;
+        }
+      
+        setInterval(function() {
+            if(app=="timer" && a==2)
+            {
+                document.querySelector('.times').innerHTML = getTime();
+                document.getElementById("change").style.color="rgb(173, 131, 16)";
+            }
+            
+        }, 1000)
+      </script>
+      <div align="center" class="top">
+        <button class="island box" id="change" onclick="dowhat()">
+          <div class="times" style="font-size: 90px;"></div>
+            <a  id="left" style="margin:10px 50px 10px 20px; float: left">Contrail</a>
+            <div style="margin:10px 10px 10px 20px; text-align:right;float: right">
+             <a id="right"></a>
+            
+            </div>
+        </button>
+      </div>
+      <!-- <input value="Content" id="text">
+      <button onclick="change()">Change</button>
+      <button onclick="auto('菜单','已打开',1);">Menu</button>
+      <button onclick="normal()">normal</button>
+      <button onclick="larger()">larger</button>
+      <button onclick="timer()">Timer</button> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新手教程 - Contrail</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .label{
+            width: 80%;
+            height: 70%;
+            margin: 120px auto;
+            text-align: center;
+        }
+        .label>ul{
+            width: 400px;
+            height: 50px;
+        }
+        .label>ul>li{
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 50px;
+            background-color: rgba(128, 128, 128, 0.197);
+            line-height: 50px;
+            color: white;
+        }
+        .label>div{
+            border-radius:16px;
+            width: 80%;
+            height: 70%;
+            position: absolute;
+            color: white;
+            line-height: 70px;
+            background-color: #222222;
+            display: none;
+        }
+        .label li.showed{
+            background-color: #0000008b;
+            line-height: 40px;
+            box-shadow: 5px 5px 20px #333333;
+        }
+        .label div.showed{
+            display: block;
+            box-shadow: 5px 5px 20px #333333;
+        }
+    </style>
+    <style>
+        .button {
+          display: inline-block;
+          border-radius: 4px;
+          background-color: #2644ca;
+          border: none;
+          color: #FFFFFF;
+          text-align: center;
+          font-size: 10px;
+          padding: 20px;
+          width: 100px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+        
+        .button span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+        
+        .button span:after {
+          content: '»';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+        
+        .button:hover span {
+          padding-right: 25px;
+        }
+        
+        .button:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
+        .back {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #1e54f4;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  vertical-align:middle;
+  }
+  .inputbox{width:40%;height:6%; border-radius:14px;border:2px solid #0000002b;}
+        </style>
+</head>
+<body>
+ 
+<div class="label">
+    <ul>
+        <li class="showed">开始</li>
+        <li>用户信息</li>
+        <li>灵动岛</li>
+        <li>结语</li>
+    </ul>
+    <div class="showed">
+        <h3>开始</h3>
+        我很荣幸地发布了Contrail第一个大更新，你们应该已经看到顶部的灵动岛了吧。<button class="button" onclick="auto('欢迎你','新人',1)">灵动岛动画</button>
+        <br>通过灵动岛可以将交互功能发挥到极致。<br>
+        接下来，请按照一个个标签页，设置你自己的Contrail记忆吧！
+    </div>
+    <div><h3>用户信息</h3>
+        <h4>
+            &nbsp&nbsp&nbsp创建新记忆&nbsp&nbsp&nbsp
+            <input id="create" value="昵称" class="inputbox">
+            </input>
+            <button class="back" style="background-color: grey;" onclick="createme()">
+                创建
+            </button>
+        </h4>
+        <hr>
+        <h4>
+            &nbsp&nbsp&nbsp找回旧记忆&nbsp&nbsp&nbsp
+            <input id="find" value="记忆码" class="inputbox">
+            </input>
+            <button class="back" style="background-color: grey;" onclick="findme()">
+                寻找
+            </button>
+        </h4>
+    </div>
+    <div><h3>灵动岛</h3>
+    下面让我帮你讲一下灵动岛的使用方式
+    <br>
+    一般情况下，灵动岛是自动弹出的，当然你可以点击一下灵动岛，则可以变大，再点一下，就可以变小
+    <br>
+    我是很看好这个功能的，总之，它也算这次大更新的特色之一。
+    <button class="button" onclick="timer()">显示时间</button>
+    </div>
+    <div><h3>结语</h3>
+    确保所有设置都设置完毕
+    <br>
+    下面就开始Contrail之旅吧！
+    </div>
+</div>
+     
+</body>
+<script type="text/javascript" src="jquery-1.6.js"></script>
+<script>
+        $(".label li").mouseenter(function () {
+         if(! $(this).hasClass(".showed")){
+        $(".showed").removeClass("showed");
+        $(this).addClass("showed");
+        $(".label>div").eq($(this).index()).addClass("showed");
+        }
+    })
+</script>
+</html>
